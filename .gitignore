@@ -1,0 +1,13 @@
+# Dados comerciais (nomes de empresas e valores) — NUNCA enviar ao GitHub
+dashboard.html
+dados.json
+atualizacao.log
+atualizacao.log.old
+*.tmp
+*.xlsx
+*.xlsm
+~$*
+
+# Python
+__pycache__/
+*.pyc

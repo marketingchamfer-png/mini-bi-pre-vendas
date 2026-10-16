@@ -1,0 +1,202 @@
+{
+  "versao_painel": "1.0.0",
+  "titulo_painel": "Pré-Vendas Chamfer",
+
+  "pasta_raiz": "Y:\\2026\\DEPARTAMENTO\\PRÉ-VENDAS\\GERAL\\RELATÓRIOS SEMANAIS",
+  "varrer_subpastas": true,
+  "subpastas_ignoradas": ["BI"],
+  "extensoes_aceitas": [".xlsx", ".xlsm"],
+  "padroes_de_nome": {
+    "status_vendas": "*STATUS*LEADS*VENDAS*",
+    "potencial_leads": "*DISTRIBUI*LEADS*POTENCIAL*"
+  },
+  "abas": {
+    "status_vendas": "Geral",
+    "potencial_leads": "Potencial dos leads"
+  },
+  "pasta_de_saida": "",
+  "_pasta_de_saida_obs": "Vazio = subpasta BI dentro da pasta_raiz. Pode ser um caminho absoluto.",
+
+  "limite_outlier_reais": 1000000,
+  "linhas_vazias_para_parar_leitura": 200,
+
+  "cores_da_marca": {
+    "_obs": "Primária e destaque seguem o Kit de Marca Chamfer (azul #003366, laranja #F5A800). As cores de status seguem o prompt original.",
+    "primaria": "#003366",
+    "destaque": "#F5A800",
+    "sucesso_fechado": "#1FA971",
+    "atencao_em_andamento": "#F2B01E",
+    "perigo_perdido": "#E5484D",
+    "neutro_sem_retorno": "#8B95A5",
+    "sem_pedido_registrado": "#2F6BDB",
+    "descartado": "#6B4A33",
+    "outros_revisar": "#B05BD8",
+    "fundo_claro": "#F5F7FA",
+    "superficie_clara": "#FFFFFF",
+    "fundo_escuro": "#0E1621",
+    "superficie_escura": "#162232"
+  },
+
+  "meses": {
+    "janeiro": 1, "fevereiro": 2, "marco": 3, "abril": 4, "maio": 5, "junho": 6,
+    "julho": 7, "agosto": 8, "setembro": 9, "outubro": 10, "novembro": 11, "dezembro": 12
+  },
+
+  "mapa_de_status": {
+    "_obs": "A comparação ignora caixa, acentos, espaços e pontuação. Status não encontrado vai para 'Outros (revisar)'.",
+    "grupos": {
+      "Fechado": [
+        "Pedido fechado"
+      ],
+      "Em andamento": [
+        "Em negociação",
+        "Cotação enviada",
+        "Amostra enviada",
+        "Amostra enviada, em teste",
+        "Aguardando retorno",
+        "Aguardando aprovação da diretoria",
+        "Aguardando aprovação da exportação",
+        "Em homologação",
+        "Aguardando arte",
+        "Aguardando desenvolvimento da arte",
+        "Aguardando amostra para levar no cliente",
+        "Agendando visita",
+        "Cotando frete",
+        "Na próxima cotação fechará conosco",
+        "Fechará conosco no próximo pedido",
+        "Projeto para 2027",
+        "Teria interesse em 16 retangular",
+        "Deseja termoinjetáveis"
+      ],
+      "Sem retorno": [
+        "Sem retorno do Lead",
+        "Contato 04/08 sem retorno até o momento"
+      ],
+      "Sem pedido registrado": [
+        "Sem registro de pedido em sistema",
+        "Sem informação"
+      ],
+      "Perdido": [
+        "Perda por preço",
+        "Fechou com concorrente",
+        "Cotação enviada, concorrente enviou mais barato",
+        "Achou o custo para silk alto",
+        "Frete acima do esperado, sem interesse",
+        "Nosso produto não atende",
+        "Não atendeu as medidas",
+        "Quantidade não lhe atende",
+        "Declinou, queria P220A com IML",
+        "Sem interesse",
+        "Não teria mais interesse",
+        "Não tem mais interesse",
+        "Lead declinou",
+        "Cliente dele declinou o projeto",
+        "Abortou pedido",
+        "Decidiu não prosseguir no momento",
+        "Queria comprar sem nota fiscal"
+      ],
+      "Descartado": [
+        "Barrado pelo financeiro",
+        "Direcionado ao varejo",
+        "Não representa mais a Chamfer"
+      ]
+    },
+    "regras_contem": [
+      { "contem": "homologa", "grupo": "Em andamento" },
+      { "contem": "aguardando", "grupo": "Em andamento" },
+      { "contem": "sem retorno", "grupo": "Sem retorno" },
+      { "contem": "concorrente", "grupo": "Perdido", "motivo": "Preço / Concorrência" },
+      { "contem": "pedido fechado", "grupo": "Fechado" }
+    ],
+    "motivos_de_perda": {
+      "Preço / Concorrência": [
+        "Perda por preço",
+        "Fechou com concorrente",
+        "Cotação enviada, concorrente enviou mais barato",
+        "Achou o custo para silk alto"
+      ],
+      "Frete": [
+        "Frete acima do esperado, sem interesse"
+      ],
+      "Produto / Especificação": [
+        "Nosso produto não atende",
+        "Não atendeu as medidas",
+        "Quantidade não lhe atende",
+        "Declinou, queria P220A com IML"
+      ],
+      "Desistência do lead": [
+        "Sem interesse",
+        "Não teria mais interesse",
+        "Não tem mais interesse",
+        "Lead declinou",
+        "Cliente dele declinou o projeto",
+        "Abortou pedido",
+        "Decidiu não prosseguir no momento"
+      ],
+      "Condição comercial / fiscal": [
+        "Queria comprar sem nota fiscal",
+        "Barrado pelo financeiro"
+      ]
+    },
+    "grupos_em_aberto": ["Em andamento", "Sem retorno", "Sem pedido registrado"],
+    "grupos_de_perda": ["Perdido", "Descartado"],
+    "ordem_dos_grupos": ["Fechado", "Em andamento", "Sem retorno", "Sem pedido registrado", "Perdido", "Descartado", "Outros (revisar)"]
+  },
+
+  "mapa_de_itens": {
+    "_obs": "de_para: grafias que viram um código padrão (comparação sem caixa e sem espaços extras). revisar: itens suspeitos que aparecem na Qualidade dos Dados com a sugestão.",
+    "de_para": {
+      "3,2 A.N": "3,2AN",
+      "3,2 AN": "3,2AN",
+      "Balde 3,2": "3,2AN",
+      "Balde 3,2AN": "3,2AN",
+      "Pote 7R": "7R",
+      "Balde 3,6R": "3,6R",
+      "Balde 2,2": "2,2L",
+      "1.8": "1,8",
+      "11.4": "11,4"
+    },
+    "revisar": {
+      "3,R": "Provável erro de digitação de 3,6R",
+      "Pote de sorvete 2L": "Provável Pote de sorvete retangular 2L"
+    },
+    "separadores_de_itens": "\\s*(?:,\\s+|;|/|\\+|\\s+e\\s+)\\s*",
+    "familias": [
+      { "familia": "Potes de sorvete retangulares", "regex": "^POTE DE SORVETE" },
+      { "familia": "Potes/baldes (P###)", "regex": "^P\\d+[A-Z]*$" },
+      { "familia": "Frascos", "regex": "^FRASCO" },
+      { "familia": "Tampas", "regex": "^TAMPA" },
+      { "familia": "Baldes", "regex": "^\\d+(,\\d+)?[A-Z]*$" }
+    ],
+    "familia_padrao": "Outros (revisar)"
+  },
+
+  "vendedores": {
+    "_obs": "Sufixos removidos ao comparar o nome do vendedor com o nome das abas da planilha de status. Aba com a palavra INATIVO marca o vendedor como inativo.",
+    "sufixos_ignorados": ["REPRESENTANTE", "REPRESENTANTES", "INATIVO", "INATIVA"],
+    "palavra_inativo": "INATIVO"
+  },
+
+  "regioes": {
+    "Norte": ["AC", "AP", "AM", "PA", "RO", "RR", "TO"],
+    "Nordeste": ["AL", "BA", "CE", "MA", "PB", "PE", "PI", "RN", "SE"],
+    "Centro-Oeste": ["DF", "GO", "MT", "MS"],
+    "Sudeste": ["ES", "MG", "RJ", "SP"],
+    "Sul": ["PR", "RS", "SC"]
+  },
+
+  "valores_de_referencia": {
+    "_obs": "Fotografia de 09/10/2026 usada para conferir a primeira versão. O log mostra OK/DIFERENTE; diferenças são esperadas quando as planilhas mudam.",
+    "leads_aba_geral": 328,
+    "pedidos_fechados": 68,
+    "faturado_total": 690185.68,
+    "faturado_por_mes": { "2026-07": 103573.89, "2026-08": 122548.68, "2026-09": 379759.01, "2026-10": 84304.1 },
+    "leads_por_score": { "1": 116, "2": 57, "3": 23, "0": 132 },
+    "leads_potencial": 330,
+    "potencial_total": 10167915.33,
+    "maior_lead": 2100000.0,
+    "leads_sp": 146,
+    "empresas_em_ambos": 318,
+    "chave_empresa_data_casando": 321
+  }
+}
